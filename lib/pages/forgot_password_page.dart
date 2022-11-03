@@ -20,7 +20,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
   @override
   Widget build(BuildContext context) {
-    double _headerHeight = 300;
+    double _headerHeight = 200;
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -32,7 +32,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
               SafeArea(
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(25, 10, 25, 10),
+                  margin: EdgeInsets.fromLTRB(25, 80, 25, 10),
                   padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                   child: Column(
                     children: [

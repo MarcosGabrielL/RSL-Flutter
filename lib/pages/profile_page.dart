@@ -2,10 +2,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:rede_social_livre/pages/login_page.dart';
 import 'package:rede_social_livre/pages/splash_screen.dart';
 import 'package:rede_social_livre/pages/widgets/header_widget.dart';
 
+import 'actions/Home.dart';
 import 'forgot_password_page.dart';
 import 'forgot_password_verification_page.dart';
 import 'registration_page.dart';
@@ -14,7 +16,7 @@ class ProfilePage extends StatefulWidget{
 
   @override
   State<StatefulWidget> createState() {
-     return _ProfilePageState();
+    return _ProfilePageState();
   }
 }
 
@@ -69,14 +71,14 @@ class _ProfilePageState extends State<ProfilePage>{
                   end: Alignment.bottomRight,
                   stops: [0.0, 1.0],
                   colors: [
-                    Theme.of(context).primaryColor.withOpacity(0.2),
-                    Theme.of(context).accentColor.withOpacity(0.5),
+                    HexColor("#e8e8e"),//Theme.of(context).primaryColor.withOpacity(0.2),
+                    HexColor("#e8e8e"),//Theme.of(context).accentColor.withOpacity(0.5),
                   ]
               )
           ) ,
           child: ListView(
             children: [
-              DrawerHeader(
+             /* DrawerHeader(
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   gradient: LinearGradient(
@@ -92,44 +94,60 @@ class _ProfilePageState extends State<ProfilePage>{
                     style: TextStyle(fontSize: 25,color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
+              ),*/
               ListTile(
-                leading: Icon(Icons.screen_lock_landscape_rounded, size: _drawerIconSize, color: Theme.of(context).accentColor,),
+                leading: Icon(Icons.home, size: _drawerIconSize, color: Theme.of(context).accentColor,),
                 title: Text('Inicio', style: TextStyle(fontSize: 17, color: Theme.of(context).accentColor),),
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SplashScreen(title: "Splash Screen")));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                 },
               ),
               ListTile(
-                leading: Icon(Icons.login_rounded,size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Entrar', style: TextStyle(fontSize: _drawerFontSize, color: Theme.of(context).accentColor),
-                ),
+                leading: Icon(Icons.account_circle_outlined,size: _drawerIconSize,color: Colors.orange,),
+                title: Text('Perfil', style: TextStyle(fontSize: _drawerFontSize, color: Colors.orange),),
+
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.person_add_alt_1, size: _drawerIconSize,color: Theme.of(context).accentColor),
-                title: Text('Registrar',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.search, size: _drawerIconSize,color: Theme.of(context).accentColor),
+                title: Text('Buscar',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.password_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Esqueci Senha',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.bar_chart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Estatisticas',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
-                leading: Icon(Icons.verified_user_sharp, size: _drawerIconSize,color: Theme.of(context).accentColor,),
-                title: Text('Verificar Telefone',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.file_open_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Arquivos',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
                 onTap: () {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.shopping_cart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Loja',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.edit_road_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Ajustes',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  SystemNavigator.pop();
                 },
               ),
               Divider(color: Theme.of(context).primaryColor, height: 1,),

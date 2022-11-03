@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage>{
             ),
             SafeArea(
               child: Container( 
-                padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                padding: EdgeInsets.fromLTRB(0, 80, 0, 40),
                   margin: EdgeInsets.fromLTRB(20, 10, 20, 10),// This will be the login form
                 child: Column(
                   children: [
