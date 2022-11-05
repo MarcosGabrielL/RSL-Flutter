@@ -1,186 +1,168 @@
-
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:rede_social_livre/common/theme_helper.dart';
-
+import 'package:rede_social_livre/pages/util/story_circles.dart';
 import '../forgot_password_page.dart';
-import '../widgets/header_widget.dart';
+import '../forgot_password_verification_page.dart';
+import '../login_page.dart';
+import '../registration_page.dart';
+import 'storypage.dart';
 
-class Home extends StatefulWidget{
-  const Home({Key? key}): super(key:key);
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home>{
-  double _headerHeight = 150;
-  Key _formKey = GlobalKey<FormState>();
+class _HomeState extends State<Home> {
+
+  double  _drawerIconSize = 24;
+  double _drawerFontSize = 17;
+
+  void _openStory() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => StoryPage(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Inicio",
-          style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold),
-        ),
+        title: Text("Shadownban", style: TextStyle(color: Theme.of(context).accentColor, fontWeight: FontWeight.bold)),
         elevation: 0.5,
-        iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
+        iconTheme: IconThemeData(color: Theme.of(context).accentColor),
         flexibleSpace:Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: <Color>[HexColor("#ffffff"), HexColor("#ffffff"),]
+                  colors: <Color>[Colors.white, Colors.white,]
               )
           ),
         ),
-        actions: [
-          Container(
-            margin: EdgeInsets.only( top: 16, right: 16,),
-            child: Stack(
-              children: <Widget>[
-                Icon(Icons.notifications, color: Theme.of(context).primaryColor,),
-                Positioned(
-                  right: 0,
-                  child: Container(
-                    padding: EdgeInsets.all(1),
-                    decoration: BoxDecoration( color: Colors.red, borderRadius: BorderRadius.circular(6),),
-                    constraints: BoxConstraints( minWidth: 12, minHeight: 12, ),
-                    child: Text( '5', style: TextStyle(color: Colors.white, fontSize: 8,), textAlign: TextAlign.center,),
-                  ),
-                )
-              ],
-            ),
-          )
-        ],
       ),
-      body: SingleChildScrollView(
-
-        child: Column(
-          children: [
-            Container(
-             // height: _headerHeight,
-              //child: HeaderWidget(_headerHeight, true, Icons.login_rounded),
-             // child: HeaderWidget(_headerHeight, true, Icons.login_rounded), //let's create a common header widget
-            ),
-            SafeArea(
-              child: Container(
-                  padding: EdgeInsets.fromLTRB(0, 80, 0, 40),
-                  margin: EdgeInsets.fromLTRB(20, 10, 20, 10),// This will be the login form
-                  child: Column(
-                    children: [
-                    /*  Text(
-                        'Inicio',
-                        style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-                      ),*/
-                   /*   Text(
-                        'Pagina Inicial',
-                        style: TextStyle(color: Colors.grey),
-                      ),*/
-                      SizedBox(height: 30.0),
-                   /*   Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              Container(
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    enabledBorder: const OutlineInputBorder(
-                                      // width: 0.0 produces a thin "hairline" border
-                                      borderSide: const BorderSide(color: Colors.transparent, width: 0.0),
-                                    ),
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Digite Usuario ou Email',
-                                    labelText:'Usuario',
-                                    filled: true,
-                                    fillColor: HexColor('#EEEEEE'),//Colors.grey, //eee
-                                  ),
-                                  style: new TextStyle(color: Colors.orange),
-                                ),
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                                //color: Colors.white10,
-                              ),
-                              SizedBox(height: 30.0),
-                              Container(
-                                child: TextField(
-                                  obscureText: true,
-
-                                  decoration: InputDecoration(
-                                    enabledBorder: const OutlineInputBorder(
-                                      // width: 0.0 produces a thin "hairline" border
-                                      borderSide: const BorderSide(color: Colors.transparent, width: 0.0),
-                                    ),
-                                    border: OutlineInputBorder(),
-                                    hintText: 'Digite sua Senha',
-                                    labelText:'Senha',
-                                    filled: true,
-                                    fillColor: HexColor('#EEEEEE'),//Colors.grey, //eee
-                                  ),
-                                  style: new TextStyle(color: Colors.orange),
-                                ),
-                                decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                              ),
-                              SizedBox(height: 15.0),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(10,0,10,20),
-                                alignment: Alignment.topRight,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push( context, MaterialPageRoute( builder: (context) => ForgotPasswordPage()), );
-                                  },
-                                  child: Text( "Esqueceu a senha?", style: TextStyle( color: Colors.grey, ),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                decoration: ThemeHelper().buttonBoxDecoration(context),
-                                child: ElevatedButton(
-                                  style: ThemeHelper().buttonStyle(),
-                                  child: Padding(
-                                    padding: EdgeInsets.fromLTRB(40, 10, 40, 10),
-                                    child: Text('Entrar'.toUpperCase(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),),
-                                  ),
-                                  onPressed: (){
-                                    //After successful login we will redirect to profile page. Let's create profile page now
-                                  //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
-                                  },
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(10,20,10,20),
-                                //child: Text('Don\'t have an account? Create'),
-                                child: Text.rich(
-                                    TextSpan(
-                                        children: [
-                                          TextSpan(text: "Não tem uma conta? "),
-                                          TextSpan(
-                                            text: 'Criar',
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = (){
-                                            //    Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()));
-                                              },
-                                            style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).accentColor),
-                                          ),
-                                        ]
-                                    )
-                                ),
-                              ),
-                            ],
-                          )
-                      ),*/
-                    ],
-                  )
+      drawer: Drawer(
+        child: Container(
+          decoration:BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.0, 1.0],
+                  colors: [
+                    HexColor("#e8e8e"),//Theme.of(context).primaryColor.withOpacity(0.2),
+                    HexColor("#e8e8e"),//Theme.of(context).accentColor.withOpacity(0.5),
+                  ]
+              )
+          ) ,
+          child: ListView(
+            children: [
+              /* DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    stops: [0.0, 1.0],
+                    colors: [ Theme.of(context).primaryColor,Theme.of(context).accentColor,],
+                  ),
+                ),
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  child: Text("Rede Social Livre",
+                    style: TextStyle(fontSize: 25,color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),*/
+              ListTile(
+                leading: Icon(Icons.home, size: _drawerIconSize, color: Theme.of(context).accentColor,),
+                title: Text('Inicio', style: TextStyle(fontSize: 17, color: Theme.of(context).accentColor),),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                },
               ),
-            ),
-          ],
+              ListTile(
+                leading: Icon(Icons.account_circle_outlined,size: _drawerIconSize,color: Colors.orange,),
+                title: Text('Perfil', style: TextStyle(fontSize: _drawerFontSize, color: Colors.orange),),
+
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.search, size: _drawerIconSize,color: Theme.of(context).accentColor),
+                title: Text('Buscar',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.bar_chart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Estatisticas',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.file_open_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Arquivos',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.shopping_cart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Loja',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.edit_road_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Ajustes',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+              ),
+              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              ListTile(
+                leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Sair',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
+                onTap: () {
+                  SystemNavigator.pop();
+                },
+              ),
+            ],
+          ),
         ),
       ),
-    );
 
+      body: Column(
+        children: [
+          SizedBox(
+            height: 120,
+            child: ListView.builder(
+              itemCount: 6,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return StoryCircle(
+                  function: _openStory,
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
