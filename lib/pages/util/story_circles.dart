@@ -10,12 +10,13 @@ class StoryCircle extends StatelessWidget {
     return GestureDetector(
       onTap: function,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(3.0),
         child: Container(
           height: 80,
           width: 80,
           decoration: BoxDecoration(
-            shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(20),
+            shape: BoxShape.rectangle,
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -24,12 +25,21 @@ class StoryCircle extends StatelessWidget {
 
           ),
             child: Center(
-              child: ClipOval(
-                  child:Image.asset(
-                      'graphics/ki.png',
-                      width: 80,
-                      height: 80,
+
+                  child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 2, color: Theme.of(context).accentColor),
+                      borderRadius: BorderRadius.circular(30), //<-- SEE HERE
+
+                    ),
+                      child: ClipOval(
+                    child: Image.asset( 'graphics/ki.png',
+                      width: 30,
+                      height: 30,
                       fit:BoxFit.fill
+                  ),
 
                   ) //ImageIcon(AssetImage('graphics/ki.png'), size: 128, color: Theme.of(context).primaryColor,), //put your logo here
               ),

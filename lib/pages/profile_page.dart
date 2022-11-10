@@ -110,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage>{
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+             // Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.search, size: _drawerIconSize,color: Theme.of(context).accentColor),
                 title: Text('Buscar',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -118,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage>{
                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.bar_chart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Estatisticas',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -126,7 +126,7 @@ class _ProfilePageState extends State<ProfilePage>{
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.file_open_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Arquivos',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -134,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage>{
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.shopping_cart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Loja',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -142,7 +142,7 @@ class _ProfilePageState extends State<ProfilePage>{
                   SystemNavigator.pop();
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.edit_road_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Ajustes',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -150,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage>{
                   SystemNavigator.pop();
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Sair',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),

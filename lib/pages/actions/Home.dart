@@ -80,21 +80,21 @@ class _HomeState extends State<Home> {
                 ),
               ),*/
               ListTile(
-                leading: Icon(Icons.home, size: _drawerIconSize, color: Theme.of(context).accentColor,),
-                title: Text('Inicio', style: TextStyle(fontSize: 17, color: Theme.of(context).accentColor),),
+                leading: Icon(Icons.home, size: _drawerIconSize, color: Colors.orange,),
+                title: Text('Inicio', style: TextStyle(fontSize: 17, color: Colors.orange),),
                 onTap: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                 },
               ),
               ListTile(
-                leading: Icon(Icons.account_circle_outlined,size: _drawerIconSize,color: Colors.orange,),
-                title: Text('Perfil', style: TextStyle(fontSize: _drawerFontSize, color: Colors.orange),),
+                leading: Icon(Icons.account_circle_outlined,size: _drawerIconSize,color: Theme.of(context).accentColor,),
+                title: Text('Perfil', style: TextStyle(fontSize: _drawerFontSize, color: Theme.of(context).accentColor),),
 
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()),);
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.search, size: _drawerIconSize,color: Theme.of(context).accentColor),
                 title: Text('Buscar',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -102,7 +102,7 @@ class _HomeState extends State<Home> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationPage()),);
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.bar_chart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Estatisticas',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -110,7 +110,7 @@ class _HomeState extends State<Home> {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordPage()),);
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.file_open_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Arquivos',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -118,7 +118,7 @@ class _HomeState extends State<Home> {
                   Navigator.push( context, MaterialPageRoute(builder: (context) => ForgotPasswordVerificationPage()), );
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.shopping_cart, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Loja',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
                   SystemNavigator.pop();
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.edit_road_outlined, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Ajustes',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
                   SystemNavigator.pop();
                 },
               ),
-              Divider(color: Theme.of(context).primaryColor, height: 1,),
+              //Divider(color: Theme.of(context).primaryColor, height: 1,),
               ListTile(
                 leading: Icon(Icons.logout_rounded, size: _drawerIconSize,color: Theme.of(context).accentColor,),
                 title: Text('Sair',style: TextStyle(fontSize: _drawerFontSize,color: Theme.of(context).accentColor),),
